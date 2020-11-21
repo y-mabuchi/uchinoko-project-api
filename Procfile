@@ -1,1 +1,1 @@
-web:ts-node ./bin/www
+web:ts-node./bin/www
