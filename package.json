@@ -10,7 +10,8 @@
     "tsc": "tsc",
     "build": "npm-run-all clean tsc",
     "node": "node .",
-    "dev:nodemon": "nodemon -x ts-node src/index.ts"
+    "dev:nodemon": "nodemon -x ts-node src/index.ts",
+    "heroku-postbuild": "npm run-script build"
   },
   "keywords": [],
   "author": "",
