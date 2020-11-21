@@ -10,7 +10,7 @@
     "tsc": "tsc",
     "build": "npm-run-all clean tsc",
     "node": "node .",
-    "start:production": "node build/index.js",
+    "start:production": "node dist/index.js",
     "dev:nodemon": "nodemon -x ts-node src/index.ts",
     "postinstall": "npm run build"
 
