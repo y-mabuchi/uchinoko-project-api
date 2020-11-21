@@ -1,4 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
+const port : string|number = process.env.PORT || 5000;
+
 interface MesageRequest extends Request {
   body: {
     message: number
@@ -15,4 +17,6 @@ app.get("/", (req: MesageRequest, res: Response, next: NextFunction): void => {
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 });
-app.listen(3000);
+
+app.listen(port,() => console.log(`hosting @${port}`));
+
