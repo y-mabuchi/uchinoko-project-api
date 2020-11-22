@@ -10,21 +10,27 @@
     "tsc": "tsc",
     "build": "npm-run-all clean tsc",
     "node": "node .",
-    "m:generate": "npx ts-node node_modules/.bin/typeorm migration:generate -n",
-    "m:run": "npx ts-node ./node_modules/.bin/typeorm migration:run",
+    "migrate:generate": "npx ts-node node_modules/.bin/typeorm migration:generate -n",
+    "migrate:run": "npx ts-node ./node_modules/.bin/typeorm migration:run",
     "postinstall": "npm run build",
     "migration:prod": "ts-node node_modules/.bin/typeorm migration:run",
-    "start:prod": "node dist/index.js"
+    "start:prod": "node dist/index.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "devDependencies": {
+    "@babel/cli": "^7.12.7",
+    "@babel/core": "^7.12.7",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.12.7",
+    "@types/jest": "^26.0.15",
     "jest": "^26.6.3",
     "ts-jest": "^26.4.4"
   },
+  "$comment(dependenciesについて)": "",
   "dependencies": {
     "@types/express": "^4.17.9",
-    "@types/jest": "^26.0.15",
     "@types/node": "^12.19.6",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -40,7 +46,7 @@
     "typeorm": "^0.2.29",
     "typescript": "^3.9.7"
   },
-  "type": "module",
+  "$comment_01": "下記はherokuでのversion指定のため",
   "engines": {
     "node": "12.6.0",
     "npm": "6.14.8"
