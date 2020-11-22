@@ -1,12 +1,13 @@
+import { Response} from "express"
 import { initializeApp } from "./config/initializer"; //初期化
 import { usersIndex } from "./controller/users";
 import { userCreate, validateStoreCreate } from "./controller/users/create";
 const env = process.env;
 const port : string|number = env.PORT || 5000;
 
-(async () => {
+(async (): void => {
     const { app, db } = await initializeApp();
-    app.get("/", (req, res, next): void => {
+    app.get("/", (_, res: Response<string>): void => {
         res.send(`<h1 style="text-align: center; line-height: 100vh;">Hello Uchinoko!!</h1>`);
     })
     // fetch all users

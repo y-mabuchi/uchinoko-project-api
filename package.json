@@ -15,7 +15,11 @@
     "postinstall": "npm run build",
     "migration:prod": "ts-node node_modules/.bin/typeorm migration:run",
     "start:prod": "node dist/index.js",
-    "test": "jest"
+    "test": "jest",
+    "eslint": "eslint src/**/*.ts",
+    "check-types": "tsc --noEmit",
+    "eslint:fix": "eslint src/**/*.ts --fix",
+    "lint": "npm-run-all eslint check-types"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +29,12 @@
     "@babel/node": "^7.12.6",
     "@babel/preset-env": "^7.12.7",
     "@types/jest": "^26.0.15",
+    "@typescript-eslint/eslint-plugin": "^4.8.1",
+    "@typescript-eslint/parser": "^4.8.1",
+    "eslint": "^7.14.0",
+    "i": "^0.3.6",
     "jest": "^26.6.3",
+    "npm": "^6.14.9",
     "ts-jest": "^26.4.4"
   },
   "$comment(dependenciesについて)": "",
@@ -46,7 +55,7 @@
     "typeorm": "^0.2.29",
     "typescript": "^3.9.7"
   },
-  "$comment_01": "下記はherokuでのversion指定のため",
+  "$comment_01": "下記はheroku環境でのversion指定のため",
   "engines": {
     "node": "12.6.0",
     "npm": "6.14.8"
