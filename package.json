@@ -1,9 +1,8 @@
 {
   "name": "typescript-node-base",
   "version": "0.1.0",
-  "description": "",
+  "description": "* TypeScript + Node.js project boilerplate",
   "main": "dist/index.js",
-  "type": "module",
   "scripts": {
     "start": "ts-node src/index.ts",
     "dev:watch": "ts-node-dev --respawn src/index.ts",
@@ -13,7 +12,6 @@
     "node": "node .",
     "start:production": "node dist/index.js",
     "dev:nodemon": "nodemon -x ts-node src/index.ts",
-    "postinstall": "npm run build",
     "m:generate": "npx ts-node node_modules/.bin/typeorm migration:generate -n",
     "m:run": "npx ts-node ./node_modules/.bin/typeorm migration:run",
     "migration:prod": "ts-node node_modules/.bin/typeorm migration:run"
@@ -41,5 +39,6 @@
     "@types/node": "^12.19.6",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2"
-  }
+  },
+  "type": "module"
 }
