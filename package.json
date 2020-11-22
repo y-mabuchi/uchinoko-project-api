@@ -1,63 +1,77 @@
 {
-  "name": "typescript-node-base",
-  "version": "0.1.0",
-  "description": "* TypeScript + Node.js project boilerplate",
-  "main": "dist/index.js",
-  "scripts": {
-    "start": "ts-node src/index.ts",
-    "dev:watch": "ts-node-dev --respawn src/index.ts",
-    "clean": "rimraf dist/*",
-    "tsc": "tsc",
-    "build": "npm-run-all clean tsc",
-    "node": "node .",
-    "migrate:generate": "npx ts-node node_modules/.bin/typeorm migration:generate -n",
-    "migrate:run": "npx ts-node ./node_modules/.bin/typeorm migration:run",
-    "postinstall": "npm run build",
-    "migration:prod": "ts-node node_modules/.bin/typeorm migration:run",
-    "start:prod": "node dist/index.js",
-    "test": "jest",
-    "eslint": "eslint src/**/*.ts",
-    "check-types": "tsc --noEmit",
-    "eslint:fix": "eslint src/**/*.ts --fix",
-    "lint": "npm-run-all eslint check-types"
-  },
-  "keywords": [],
-  "author": "",
-  "devDependencies": {
-    "@babel/cli": "^7.12.7",
-    "@babel/core": "^7.12.7",
-    "@babel/node": "^7.12.6",
-    "@babel/preset-env": "^7.12.7",
-    "@types/jest": "^26.0.15",
-    "@typescript-eslint/eslint-plugin": "^4.8.1",
-    "@typescript-eslint/parser": "^4.8.1",
-    "eslint": "^7.14.0",
-    "i": "^0.3.6",
-    "jest": "^26.6.3",
-    "npm": "^6.14.9",
-    "ts-jest": "^26.4.4"
-  },
-  "$comment(dependenciesについて)": "",
-  "dependencies": {
-    "@types/express": "^4.17.9",
-    "@types/node": "^12.19.6",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-validator": "^6.6.1",
-    "helmet": "^4.2.0",
-    "mysql2": "^2.2.5",
-    "nodemon": "^2.0.6",
-    "npm-run-all": "^4.1.5",
-    "reflect-metadata": "^0.1.13",
-    "rimraf": "^3.0.2",
-    "ts-node": "^8.10.2",
-    "ts-node-dev": "^1.0.0",
-    "typeorm": "^0.2.29",
-    "typescript": "^3.9.7"
-  },
-  "$comment_01": "下記はheroku環境でのversion指定のため",
-  "engines": {
-    "node": "12.6.0",
-    "npm": "6.14.8"
-  }
+    "name": "typescript-node-base",
+    "version": "0.1.0",
+    "description": "* TypeScript + Node.js project boilerplate",
+    "main": "dist/index.js",
+    "scripts": {
+        "start": "ts-node src/index.ts",
+        "dev:watch": "ts-node-dev --respawn src/index.ts",
+        "clean": "rimraf dist/*",
+        "tsc": "tsc",
+        "build": "npm-run-all clean tsc",
+        "node": "node .",
+        "migrate:generate": "npx ts-node node_modules/.bin/typeorm migration:generate -n",
+        "migrate:run": "npx ts-node ./node_modules/.bin/typeorm migration:run",
+        "postinstall": "npm run build",
+        "migration:prod": "ts-node node_modules/.bin/typeorm migration:run",
+        "start:prod": "node dist/index.js",
+        "test": "jest",
+        "eslint": "eslint src/**/*.ts",
+        "check-types": "tsc --noEmit",
+        "eslint:fix": "eslint src/**/*.ts --fix",
+        "format": "prettier --write 'src/**/*.{js,ts,json}'",
+        "lint": "npm-run-all eslint check-types",
+        "lint:fix": "npm-run-all eslint:fix check-types format"
+    },
+    "keywords": [],
+    "author": "",
+    "devDependencies": {
+        "@babel/cli": "^7.12.7",
+        "@babel/core": "^7.12.7",
+        "@babel/node": "^7.12.6",
+        "@babel/preset-env": "^7.12.7",
+        "@types/jest": "^26.0.15",
+        "@typescript-eslint/eslint-plugin": "^4.8.1",
+        "@typescript-eslint/parser": "^4.8.1",
+        "eslint": "^7.14.0",
+        "eslint-config-prettier": "6.15.0",
+        "husky": "^4.3.0",
+        "i": "^0.3.6",
+        "jest": "^26.6.3",
+        "lint-staged": "^10.5.1",
+        "npm": "^6.14.9",
+        "prettier": "2.2.0",
+        "ts-jest": "^26.4.4"
+    },
+    "$comment(dependenciesについて)": "",
+    "dependencies": {
+        "@types/express": "^4.17.9",
+        "@types/node": "^12.19.6",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "express-validator": "^6.6.1",
+        "helmet": "^4.2.0",
+        "mysql2": "^2.2.5",
+        "nodemon": "^2.0.6",
+        "npm-run-all": "^4.1.5",
+        "reflect-metadata": "^0.1.13",
+        "rimraf": "^3.0.2",
+        "ts-node": "^8.10.2",
+        "ts-node-dev": "^1.0.0",
+        "typeorm": "^0.2.29",
+        "typescript": "^3.9.7"
+    },
+    "$comment_01": "下記はheroku環境でのversion指定のため",
+    "engines": {
+        "node": "12.6.0",
+        "npm": "6.14.8"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,ts,json}": "prettier --write"
+    }
 }

@@ -1,9 +1,15 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany} from "typeorm";
-import { Book } from './Book';
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    CreateDateColumn,
+    UpdateDateColumn,
+    OneToMany,
+} from "typeorm";
+import { Book } from "./Book";
 
-@Entity({name: "user"})
+@Entity({ name: "user" })
 export class User {
-
     @PrimaryGeneratedColumn()
     private readonly id?: number;
 
@@ -16,7 +22,7 @@ export class User {
     @Column()
     public age: number;
 
-    @Column('tinyint')
+    @Column("tinyint")
     private readonly auth = false;
     @CreateDateColumn()
     readonly createdAt?: Date;
@@ -24,7 +30,7 @@ export class User {
     @UpdateDateColumn()
     readonly updatedAt?: Date;
 
-    @OneToMany(type => Book, book => book.user)
+    @OneToMany((type) => Book, (book) => book.user)
     books?: Book[];
 
     constructor(firstName: string, lastName: string, age: number) {

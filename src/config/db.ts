@@ -2,8 +2,8 @@
 import "reflect-metadata";
 import { createConnection } from "typeorm";
 /* orm */
-const ormConfig =  require("../../ormconfig");
-require('dotenv').config();
+const ormConfig = require("../../ormconfig");
+require("dotenv").config();
 const env = process.env;
 
 const database = env.DB_NAME || "";
