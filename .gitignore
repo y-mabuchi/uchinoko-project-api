@@ -137,3 +137,7 @@ typings/
 .next
 
 /dist
+
+/@src
+
+/doc

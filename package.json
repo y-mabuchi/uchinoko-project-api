@@ -12,8 +12,9 @@
     "node": "node .",
     "start:production": "node dist/index.js",
     "dev:nodemon": "nodemon -x ts-node src/index.ts",
-    "postinstall": "npm run build"
-
+    "postinstall": "npm run build",
+    "m:generate": "npx ts-node node_modules/.bin/typeorm migration:generate -n",
+    "m:run": "npx ts-node ./node_modules/.bin/typeorm migration:run"
   },
   "keywords": [],
   "author": "",
@@ -29,6 +30,11 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "nodemon": "^2.0.6"
+    "express-validator": "^6.6.1",
+    "helmet": "^4.2.0",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.6",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.29"
   }
 }
