@@ -42,5 +42,9 @@
     "typeorm": "^0.2.29",
     "typescript": "^3.9.7"
   },
-  "type": "module"
+  "type": "module",
+  "engines": {
+    "node": "12.6.0",
+    "npm": "6.14.8"
+  }
 }
