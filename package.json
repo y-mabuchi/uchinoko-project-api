@@ -10,12 +10,11 @@
     "tsc": "tsc",
     "build": "npm-run-all clean tsc",
     "node": "node .",
-    "start:production": "node dist/index.js",
-    "dev:nodemon": "nodemon -x ts-node src/index.ts",
     "m:generate": "npx ts-node node_modules/.bin/typeorm migration:generate -n",
     "m:run": "npx ts-node ./node_modules/.bin/typeorm migration:run",
+    "postinstall": "npm run build",
     "migration:prod": "ts-node node_modules/.bin/typeorm migration:run",
-    "postinstall": "npm run build"
+    "start:production": "node dist/index.js"
   },
   "keywords": [],
   "author": "",

@@ -7,8 +7,8 @@ const port : string|number = env.PORT || 5000;
 (async () => {
     const { app, db } = await initializeApp();
     app.get("/", (req, res, next): void => {
-        res.send(`<h1>Hello World</h1>`);
-    })
+        res.send(`<h1>Hello Uchinoko!!</h1>`);
+    });
     // fetch all users
     // curl -X GET 'http://localhost:8080/api/users'
     app.get("/api/users", usersIndex(db));
