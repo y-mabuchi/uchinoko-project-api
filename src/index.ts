@@ -1,23 +1,22 @@
-import { initializeApp } from "./config/initializer"; //初期化
-import { usersIndex } from "./controller/users";
-import { userCreate, validateStoreCreate } from "./controller/users/create";
-const env = process.env;
+import express, { Request, Response, NextFunction } from "express";
+const port : string|number = process.env.PORT || 5000;
 
-(async () => {
-    const { app, db } = await initializeApp();
-    app.get("/", (req, res, next): void => {
-        res.send(`<h1>Hello World</h1>`);
-    })
-    // fetch all users
-    // curl -X GET 'http://localhost:8080/api/users'
-    app.get("/api/users", usersIndex(db));
-    // curl -X POST -H "Content-Type: application/json" -d '{"firstName":"my shop name", "lastName":"Fast Food", "age":25}' "http://localhost:8080/api/users"
-    app.post("/api/users", validateStoreCreate, userCreate(db))
+interface MesageRequest extends Request {
+  body: {
+    message: number
+  }
+}
+const app = express();
+app.use(express.json());
 
-    app.listen(process.env.APP_PORT, () => {
-        console.log(`Node Server started! port ${env.PORT || env.APP_PORT}`);
-    });
-})();
+app.get("/", (req: MesageRequest, res: Response, next: NextFunction): void => {
+  console.log(req.body.message)
+  res.send(`<h1>Hello World</h1>`);
+})
 
-/* これは何に使っているか不明 */
-// export type App = ReturnType<typeof initializeApp>;
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+
+});
+
+app.listen(port,() => console.log(`hosting @${port}`));
+
