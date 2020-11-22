@@ -5,7 +5,7 @@ import { userCreate, validateStoreCreate } from "./controller/users/create";
 const env = process.env;
 const port : string|number = env.PORT || 5000;
 
-(async (): void => {
+(async (): Promise<void> => {
     const { app, db } = await initializeApp();
     app.get("/", (_, res: Response<string>): void => {
         res.send(`<h1 style="text-align: center; line-height: 100vh;">Hello Uchinoko!!</h1>`);
