@@ -1,3 +1,8 @@
+import { initializeApp } from "./config/initializer"; //初期化
+import { usersIndex } from "./controller/users";
+import { userCreate, validateStoreCreate } from "./controller/users/create";
+const env = process.env;
+
 import express, { Request, Response, NextFunction } from "express";
 const port : string|number = process.env.PORT || 5000;
 
