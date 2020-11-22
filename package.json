@@ -37,8 +37,7 @@
     "nodemon": "^2.0.6",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.29",
-
-    "@comment": "ここから下はdevDependenciesにあったものを移動させてきた。",
+    "//": "ここから下はdevDependenciesにあったものを移動させてきた。",
     "ts-node": "^8.10.2",
     "ts-node-dev": "^1.0.0",
     "typescript": "^3.9.7"
