@@ -1,6 +1,7 @@
 import { initializeApp } from "./config/initializer"; //初期化
 import { usersIndex } from "./controller/users";
 import { userCreate, validateStoreCreate } from "./controller/users/create";
+const env = process.env;
 
 (async () => {
     const { app, db } = await initializeApp();
@@ -14,7 +15,7 @@ import { userCreate, validateStoreCreate } from "./controller/users/create";
     app.post("/api/users", validateStoreCreate, userCreate(db))
 
     app.listen(process.env.APP_PORT, () => {
-        console.log(`Node Server started! port ${process.env.PORT || process.env.APP_PORT}`);
+        console.log(`Node Server started! port ${env.PORT || env.APP_PORT}`);
     });
 })();
 
