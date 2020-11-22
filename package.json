@@ -14,7 +14,8 @@
     "dev:nodemon": "nodemon -x ts-node src/index.ts",
     "postinstall": "npm run build",
     "m:generate": "npx ts-node node_modules/.bin/typeorm migration:generate -n",
-    "m:run": "npx ts-node ./node_modules/.bin/typeorm migration:run"
+    "m:run": "npx ts-node ./node_modules/.bin/typeorm migration:run",
+    "migration:prod": "ts-node node_modules/.bin/typeorm migration:run"
   },
   "keywords": [],
   "author": "",
