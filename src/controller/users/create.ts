@@ -7,8 +7,7 @@ import { User } from "../../entity/User";
 import { sendError } from "../../response";
 
 export const validateStoreCreate = [
-    check("firstName").not().isEmpty(),
-    check("lastName").not().isEmpty(),
+    check("name").not().isEmpty(),
     check("age").not().isEmpty(),
 ];
 
@@ -18,14 +17,14 @@ export const userCreate = (db: Connection) => {
             const errors = validationResult(req);
 
             if (errors.isEmpty()) {
-                const firstName = req.body.firstName || "";
-                const lastName = req.body.lastName || "";
+                const name = req.body.name || "";
                 const age = req.body.age || "";
+                const password = req.body.password || "";
                 const userRepository = db.getRepository(User);
                 const user = userRepository.create({
-                    firstName,
-                    lastName,
+                    name,
                     age,
+                    password,
                 });
 
                 await userRepository.save(user);

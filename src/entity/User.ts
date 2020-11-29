@@ -14,16 +14,26 @@ export class User {
     private readonly id?: number;
 
     @Column()
-    public firstName: string;
+    public name: string;
 
-    @Column()
-    public lastName: string;
+    // @Column()
+    // public lastName: string;
 
     @Column()
     public age: number;
 
+    @Column()
+    public password: string;
+
+    @Column()
+    public email: string;
+
+    @Column()
+    public token: string;
+
     @Column("tinyint")
     private readonly auth = false;
+
     @CreateDateColumn()
     readonly createdAt?: Date;
 
@@ -33,9 +43,18 @@ export class User {
     @OneToMany((type) => Book, (book) => book.user)
     books?: Book[];
 
-    constructor(firstName: string, lastName: string, age: number) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    constructor(
+        name: string,
+        password: string,
+        email: string,
+        token: string,
+        age: number
+    ) {
+        this.name = name;
+        // this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.token = token;
         this.age = age;
     }
 }
