@@ -1,7 +1,5 @@
 module.exports = {
     presets: [
-        [
-          "@babel/preset-env" /* これお入れないとjestのテストでエラーのなる */
-        ]
+        ["@babel/preset-env" /* これお入れないとjestのテストでエラーのなる */],
     ],
 };

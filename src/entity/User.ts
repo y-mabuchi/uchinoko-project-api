@@ -40,7 +40,7 @@ export class User {
     @UpdateDateColumn()
     readonly updatedAt?: Date;
 
-    @OneToMany((type) => Book, (book) => book.user)
+    @OneToMany(type => Book, book => book.user)
     books?: Book[];
 
     constructor(

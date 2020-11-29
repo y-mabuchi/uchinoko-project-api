@@ -20,7 +20,7 @@ export class Book {
     @Column()
     readonly userId: number;
 
-    @ManyToOne((type) => User, (user) => user.books)
+    @ManyToOne(type => User, user => user.books)
     @JoinColumn({ name: "userId" })
     readonly user?: User;
 
