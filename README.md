@@ -21,6 +21,7 @@ DB_PORT=3306         # mysqlのポート指定なので同じだと思います�
 DB_USER=""           # 僕はめんどくさかったらでrootを使ってください。
 DB_PASS=""　　　　　　 # 設定していたら指定してください。
 DB_NAME="db_name"
+SECRET_KEY=""
 ```
 - データベース作成
 ```
