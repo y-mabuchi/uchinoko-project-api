@@ -10,7 +10,6 @@ import { auth } from "./modules/auth";
 import "./lib/env";
 
 let env = process.env;
-const KEY = env.SECRET_KEY as string;
 const port: string | number = env.PORT || 5000;
 
 (async (): Promise<void> => {
@@ -21,13 +20,14 @@ const port: string | number = env.PORT || 5000;
             `<h1 style="text-align: center; line-height: 100vh;">Hello Uchinoko!! hosting @${port}</h1>`
         );
     });
+
     app.post("/api/user/login", userLogin(db));
-    app.get("/api/user/hoge", auth, hogeIndex());
+    app.get("/api/user/hoge", hogeIndex());
     // fetch all users
     // curl -X GET 'http://localhost:8080/api/users'
-    app.get("/api/users", auth, usersIndex(db));
-    app.get("/api/user/:id", auth, userShow(db));
-    app.put("/api/user/:id", auth, userEmailChange(db));
+    app.get("/api/users", usersIndex(db));
+    app.get("/api/user/:id", userShow(db));
+    app.put("/api/user/:id", userEmailChange(db));
     app.put("/api/user/all/:id", userAllChange(db));
     // curl -X POST -H "Content-Type: application/json" -d '{"name":"my shop name", "lastName":"Fast Food", "age":25}' "http://localhost:8080/api/users"
     app.post("/api/users", validateStoreCreate, userCreate(db));

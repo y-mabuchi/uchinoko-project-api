@@ -13,11 +13,11 @@ module.exports = {
     logging:
         env.NODE_ENV == "production" ? false : true /* 本番では出力しない */,
     entities: ["src/entity/**/*.ts"],
-    migrations: ["src/migration/**/*.ts"],
-    subscribers: ["src/subscriber/**/*.ts"],
+    migrations: ["src/migration/**/*.ts", "src/seed/**/*.ts"],
+    // subscribers: ["src/subscriber/**/*.ts"],
     cli: {
         entitiesDir: "src/entity",
         migrationsDir: "src/migration",
-        subscribersDir: "src/subscriber",
+        // subscribersDir: "src/subscriber",
     },
 };

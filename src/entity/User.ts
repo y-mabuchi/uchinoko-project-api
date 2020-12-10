@@ -6,7 +6,9 @@ import {
     UpdateDateColumn,
     OneToMany,
 } from "typeorm";
-import { Book } from "./Book";
+
+import { Pet } from "./Pet";
+import { Like } from "./Like";
 
 @Entity({ name: "user" })
 export class User {
@@ -16,23 +18,11 @@ export class User {
     @Column()
     public name: string;
 
-    // @Column()
-    // public lastName: string;
-
-    @Column()
-    public age: number;
-
     @Column()
     public password: string;
 
     @Column()
     public email: string;
-
-    @Column()
-    public token: string;
-
-    @Column("tinyint")
-    private readonly auth = false;
 
     @CreateDateColumn()
     readonly createdAt?: Date;
@@ -40,21 +30,15 @@ export class User {
     @UpdateDateColumn()
     readonly updatedAt?: Date;
 
-    @OneToMany(type => Book, book => book.user)
-    books?: Book[];
+    @OneToMany(type => Pet, pet => pet.user)
+    pets?: Pet[];
 
-    constructor(
-        name: string,
-        password: string,
-        email: string,
-        token: string,
-        age: number
-    ) {
+    @OneToMany(type => Like, like => like.user)
+    likes?: Like[];
+
+    constructor(name: string, password: string, email: string, age: number) {
         this.name = name;
-        // this.lastName = lastName;
         this.password = password;
         this.email = email;
-        this.token = token;
-        this.age = age;
     }
 }

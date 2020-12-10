@@ -18,12 +18,12 @@ export const userCreate = (db: Connection) => {
 
             if (errors.isEmpty()) {
                 const name = req.body.name || "";
-                const age = req.body.age || "";
+                const email = req.body.email || "";
                 const password = req.body.password || "";
                 const userRepository = db.getRepository(User);
                 const user = userRepository.create({
                     name,
-                    age,
+                    email,
                     password,
                 });
 

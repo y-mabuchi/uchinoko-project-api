@@ -7,25 +7,20 @@ import {
     PrimaryGeneratedColumn,
     UpdateDateColumn,
 } from "typeorm";
-import { User } from "./User";
 
-@Entity({ name: "book" })
-export class Book {
+import { User } from "./User";
+import { Pet } from "./Pet";
+
+@Entity({ name: "like" })
+export class Like {
     @PrimaryGeneratedColumn()
     readonly id?: number;
 
     @Column()
-    readonly title: string;
-
-    @Column()
     readonly userId: number;
 
-    @ManyToOne(type => User, user => user.books)
-    @JoinColumn({ name: "userId" })
-    readonly user?: User;
-
-    //   @Column('datetime', { default: null })
-    //   publishedAt: Date | null = null;
+    @Column()
+    readonly petId: number;
 
     @CreateDateColumn()
     readonly createdAt?: Date;
@@ -33,8 +28,16 @@ export class Book {
     @UpdateDateColumn()
     readonly updatedAt?: Date;
 
-    constructor(title: string, userId: number) {
-        this.title = title;
+    @ManyToOne(type => User, user => user.likes)
+    @JoinColumn({ name: "userId" })
+    readonly user?: User;
+
+    @ManyToOne(type => Pet, pet => pet.likes)
+    @JoinColumn({ name: "petId" })
+    readonly pet?: Pet;
+
+    constructor(userId: number, petId: number) {
         this.userId = userId;
+        this.petId = petId;
     }
 }

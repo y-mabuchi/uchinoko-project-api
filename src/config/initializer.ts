@@ -33,6 +33,6 @@ export const initializeApp = async () => {
 };
 
 // NOTE どのような処理か不明
-export type App = ReturnType<typeof initializeApp> extends Promise<infer T>
-    ? T
-    : never;
+// export type App = ReturnType<typeof initializeApp> extends Promise<infer T>
+//     ? T
+//     : never;

@@ -42,8 +42,6 @@ export const userAllChange = (db: Connection) => {
                 user.name = req.body.name || "";
                 user.email = req.body.email || "";
                 user.password = req.body.password || "";
-                user.age = req.body.age || "";
-                user.token = req.body.token || "";
                 await userRepository.save(user);
                 return sendOK(res, user);
                 1;
