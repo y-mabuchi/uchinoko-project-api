@@ -12,8 +12,8 @@ export const petsIndex = (db: Connection) => {
             const petRepository = db.getRepository(Pet);
             const pets = await petRepository.find();
             return sendOK(res, pets);
-        } catch (e) {
-            return sendError(res, 500, "error");
+        } catch (error) {
+            return sendError(res, 500, error);
         }
     };
 };

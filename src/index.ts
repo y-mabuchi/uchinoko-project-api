@@ -8,7 +8,8 @@ import { userLogin } from "./controller/users/login";
 import { userEmailChange, userAllChange } from "./controller/users/update";
 import { userCreate, validateStoreCreate } from "./controller/users/create";
 // Pets
-import { petCreate, petsIndex } from "./controller/pets";
+import { petCreate, petShow, petsIndex } from "./controller/pets";
+// Auth
 import { auth } from "./modules/auth";
 import "./lib/env";
 
@@ -38,6 +39,7 @@ const port: string | number = env.APP_PORT || 5000;
 
     // Pets resource
     app.get("/api/v1/pets", petsIndex(db));
+    app.get("/api/v1/pets/:id", petShow(db));
     app.post("/api/v1/pets", validateStoreCreate, petCreate(db));
 
     app.listen(port, () => console.log(`hosting @${port}`));
