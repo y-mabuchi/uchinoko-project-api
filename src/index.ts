@@ -12,8 +12,8 @@ import { petsIndex } from "./controller/pets";
 import { auth } from "./modules/auth";
 import "./lib/env";
 
-let env = process.env;
-const port: string | number = env.PORT || 5000;
+const env = process.env;
+const port: string | number = env.APP_PORT || 5000;
 
 (async (): Promise<void> => {
     const { app, db } = await initializeApp();
