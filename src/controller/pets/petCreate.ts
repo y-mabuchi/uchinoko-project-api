@@ -8,10 +8,10 @@ import { Pet } from "../../entity/Pet";
 import { sendError } from "../../response";
 
 // validation setting
-export const validateStoreCreate = [
+export const validatePetCreate = [
     check("name").not().isEmpty(),
     check("sex").not().isEmpty(),
-    check("imagePath").not().isEmpty(),
+    // check("imagePath").not().isEmpty(),
     check("userId").not().isEmpty(),
     check("birthday").not().isEmpty(),
     check("pickupDate").not().isEmpty(),
@@ -22,6 +22,7 @@ export const petCreate = (db: Connection) => {
         try {
             // validation check
             const errors = validationResult(req);
+            console.log(errors);
 
             if (errors.isEmpty()) {
                 // リクエストを取得

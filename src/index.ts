@@ -8,7 +8,14 @@ import { userLogin } from "./controller/users/login";
 import { userEmailChange, userAllChange } from "./controller/users/update";
 import { userCreate, validateStoreCreate } from "./controller/users/create";
 // Pets
-import { petCreate, petShow, petsIndex } from "./controller/pets";
+import {
+    petsIndex,
+    petCreate,
+    petDelete,
+    petShow,
+    petUpdate,
+    validatePetCreate,
+} from "./controller/pets";
 // Auth
 import { auth } from "./modules/auth";
 import "./lib/env";
@@ -25,7 +32,7 @@ const port: string | number = env.APP_PORT || 5000;
         );
     });
 
-    // Users resource
+    // Users Resource
     app.post("/api/user/login", userLogin(db));
     app.get("/api/user/hoge", hogeIndex());
     // fetch all users
@@ -37,10 +44,12 @@ const port: string | number = env.APP_PORT || 5000;
     // curl -X POST -H "Content-Type: application/json" -d '{"name":"my shop name", "lastName":"Fast Food", "age":25}' "http://localhost:8080/api/users"
     app.post("/api/users", validateStoreCreate, userCreate(db));
 
-    // Pets resource
+    // Pets Resource
     app.get("/api/v1/pets", petsIndex(db));
     app.get("/api/v1/pets/:id", petShow(db));
-    app.post("/api/v1/pets", validateStoreCreate, petCreate(db));
+    app.post("/api/v1/pets", validatePetCreate, petCreate(db));
+    app.put("/api/v1/pets/:id", petUpdate(db));
+    app.delete("/api/v1/pets/:id", petDelete(db));
 
     app.listen(port, () => console.log(`hosting @${port}`));
     // ➅エラーハンドリング
